@@ -13,7 +13,7 @@ public class Menu {
     private String description;
     private Double price;
 
-   // public MenuItem(){}
+   public Menu(){}
 
     public Menu(Integer id, String name, String description, Double price) {
         this.id = id;

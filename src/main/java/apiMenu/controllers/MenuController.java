@@ -3,6 +3,7 @@ package apiMenu.controllers;
 import apiMenu.domain.Menu;
 import apiMenu.services.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,9 +28,15 @@ public class MenuController {
     }
 
     // Crear un nuevo elemento del menú
-    @PostMapping
+    /*@PostMapping
     public Menu createMenuItem(@RequestBody Menu menu) {
         return menuService.saveMenu(menu);
+    }*/
+
+    @PostMapping
+    public ResponseEntity<?> createMenuItem(@RequestBody Menu menu) {
+        Menu createdItem = menuService.saveMenu(menu);
+        return ResponseEntity.status(201).body(createdItem);
     }
 
     // Eliminar un elemento del menú por ID
