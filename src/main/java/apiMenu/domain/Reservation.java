@@ -10,7 +10,7 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String reservationUserName;
-    private String reservationEmail;
+    private String userEmail;
     private Long reservationPhone;
     private LocalDateTime reservationDate;
 
@@ -18,10 +18,10 @@ public class Reservation {
     @JoinColumn(name="menu_id")
     private Menu menu;
 
-    public Reservation(Integer id, String reservationUserName, String reservationEmail, Long reservationPhone, LocalDateTime reservationDate, Menu menu) {
+    public Reservation(Integer id, String reservationUserName, String userEmail, Long reservationPhone, LocalDateTime reservationDate, Menu menu) {
         this.id = id;
         this.reservationUserName = reservationUserName;
-        this.reservationEmail = reservationEmail;
+        this.userEmail = userEmail;
         this.reservationPhone = reservationPhone;
         this.reservationDate = reservationDate;
         this.menu = menu;
@@ -43,12 +43,12 @@ public class Reservation {
         this.reservationUserName = reservationUserName;
     }
 
-    public String getReservationEmail() {
-        return reservationEmail;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setReservationEmail(String reservationEmail) {
-        this.reservationEmail = reservationEmail;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public Long getReservationPhone() {
