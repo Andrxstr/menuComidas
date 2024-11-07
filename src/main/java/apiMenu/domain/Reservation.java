@@ -3,6 +3,7 @@ package apiMenu.domain;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class Reservation {
@@ -14,20 +15,22 @@ public class Reservation {
     private Long reservationPhone;
     private LocalDateTime reservationDate;
 
-    @ManyToOne
-    @JoinColumn(name="menu_id")
-    private Menu menu;
-
+    @ManyToMany
+    @JoinTable(
+            name = "reservation_menu",
+            joinColumns = @JoinColumn(name = "reservation_id"),
+            inverseJoinColumns = @JoinColumn(name = "menu_id")
+    )
+    private Set<Menu> menus;  // Cambiado a Set para manejar múltiples menús
     public Reservation(){}
 
-
-    public Reservation(Integer id, String reservationUserName, String userEmail, Long reservationPhone, LocalDateTime reservationDate, Menu menu) {
+    public Reservation(Integer id, String reservationUserName, String userEmail, Long reservationPhone, LocalDateTime reservationDate, Set<Menu> menus) {
         this.id = id;
         this.reservationUserName = reservationUserName;
         this.userEmail = userEmail;
         this.reservationPhone = reservationPhone;
         this.reservationDate = reservationDate;
-        this.menu = menu;
+        this.menus = menus;
     }
 
     public Integer getId() {
@@ -70,11 +73,11 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public Set<Menu> getMenus() {
+        return menus;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setMenus(Set<Menu> menus) {
+        this.menus = menus;
     }
 }
