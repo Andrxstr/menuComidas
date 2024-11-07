@@ -1,6 +1,4 @@
 HELP.md
-# Archivos de configuración de Spring
-/src/main/resources/application.properties
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
